@@ -1,0 +1,199 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Conexão Divina | Discernimento Espiritual</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <style>
+      body {
+        margin: 0;
+        font-family: 'Inter', sans-serif;
+        background: linear-gradient(
+          270deg,
+          #ffd700,
+          #6a0dad,
+          #1e90ff,
+          #ff4500
+        );
+        background-size: 800% 800%;
+        animation: gradientMove 15s ease infinite;
+        color: #fff;
+        overflow-x: hidden;
+      }
+
+      @keyframes gradientMove {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+
+      .font-serif {
+        font-family: 'Playfair Display', serif;
+      }
+      .font-display {
+        font-family: 'Cinzel', serif;
+      }
+
+      @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-15px); }
+        100% { transform: translateY(0px); }
+      }
+      .animate-float {
+        animation: float 6s ease-in-out infinite;
+      }
+      
+      .text-shadow-gold {
+        text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8), 0 0 20px rgba(251, 191, 36, 0.4);
+      }
+      
+      .glass {
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      #particles-js {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        pointer-events: none;
+      }
+
+      .cta {
+        background: #ffd700;
+        color: #000;
+        padding: 18px 40px;
+        border-radius: 50px;
+        font-size: 20px;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        animation: pulseGlow 1.8s infinite;
+        transition: transform 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        border: none;
+        cursor: pointer;
+      }
+      
+      .cta:hover {
+        transform: scale(1.05);
+      }
+
+      @keyframes pulseGlow {
+        0% { box-shadow: 0 0 10px #ffd700; }
+        50% { box-shadow: 0 0 40px #ffd700; }
+        100% { box-shadow: 0 0 10px #ffd700; }
+      }
+
+      #root {
+        position: relative;
+        z-index: 1;
+      }
+
+      .bg-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.45);
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      section {
+        position: relative;
+        z-index: 10;
+      }
+
+      /* Social Proof Popup Styles */
+      .social-popup {
+        position: fixed;
+        bottom: 24px;
+        left: 24px;
+        z-index: 100;
+        background: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(251, 191, 36, 0.4);
+        padding: 12px 20px;
+        border-radius: 16px;
+        transform: translateX(-150%);
+        transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+        max-width: 320px;
+      }
+      .social-popup.show {
+        transform: translateX(0);
+      }
+      @media (max-width: 640px) {
+        .social-popup {
+          bottom: 100px;
+          left: 12px;
+          right: 12px;
+          max-width: calc(100% - 24px);
+        }
+      }
+    </style>
+    <script type="importmap">
+    {
+      "imports": {
+        "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+        "react/": "https://esm.sh/react@^19.2.3/",
+        "react": "https://esm.sh/react@^19.2.3",
+        "lucide-react": "https://esm.sh/lucide-react@^0.562.0"
+      }
+    }
+    </script>
+  </head>
+  <body>
+    <div class="bg-overlay"></div>
+    <div id="particles-js"></div>
+    <div id="root"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      particlesJS("particles-js", {
+        particles: {
+          number: { value: 60, density: { enable: true, value_area: 800 } },
+          color: { value: ["#ffd700", "#ffffff", "#87cefa"] },
+          shape: { type: "circle" },
+          opacity: { 
+            value: 0.7,
+            random: true,
+            anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false }
+          },
+          size: { value: 3, random: true },
+          line_linked: { enable: false },
+          move: { 
+            enable: true,
+            speed: 1,
+            direction: "none",
+            random: true,
+            straight: false,
+            out_mode: "out",
+            bounce: false,
+          }
+        },
+        interactivity: { detect_on: "canvas", events: { resize: true } },
+        retina_detect: true
+      });
+    </script>
+  </body>
+</html>
