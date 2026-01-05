@@ -3,6 +3,8 @@ import React from 'react';
 import { CloudOff, HeartCrack, HelpCircle, MessageSquareOff } from 'lucide-react';
 
 export const PainPoints: React.FC = () => {
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  
   const pains = [
     {
       icon: <MessageSquareOff className="w-8 h-8 text-amber-500" />,
@@ -45,7 +47,7 @@ export const PainPoints: React.FC = () => {
               key={index} 
               className="p-8 bg-zinc-900/50 border border-zinc-800 rounded-2xl hover:border-amber-500/50 transition-colors group"
               data-aos="fade-up"
-              data-aos-delay={index * 150}
+              data-aos-delay={isMobile ? "50" : index * 150} // Quase simultâneo ou muito rápido no mobile
             >
               <div className="mb-6 bg-amber-500/10 w-16 h-16 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
                 {pain.icon}
@@ -61,6 +63,7 @@ export const PainPoints: React.FC = () => {
         <div 
           className="mt-20 p-8 md:p-12 bg-gradient-to-br from-amber-900/20 to-zinc-900 rounded-3xl border border-amber-500/20 text-center space-y-6"
           data-aos="zoom-in"
+          data-aos-offset={isMobile ? "50" : "120"}
         >
           <p className="text-2xl md:text-3xl font-serif italic text-gray-200">
             "Não foi no terremoto, não foi no vento forte... Deus falou com Elias num sussurro."

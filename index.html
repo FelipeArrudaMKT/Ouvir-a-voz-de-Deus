@@ -11,6 +11,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <style>
+      html {
+        scroll-behavior: smooth;
+        -webkit-tap-highlight-color: transparent;
+      }
+
       body {
         margin: 0;
         font-family: 'Inter', sans-serif;
@@ -25,6 +30,8 @@
         animation: gradientMove 15s ease infinite;
         color: #fff;
         overflow-x: hidden;
+        /* Hardware acceleration for smoother scrolling on mobile */
+        -webkit-overflow-scrolling: touch;
       }
 
       @keyframes gradientMove {
@@ -86,6 +93,9 @@
         gap: 0.5rem;
         border: none;
         cursor: pointer;
+        /* Prevent flicker on mobile transition */
+        backface-visibility: hidden;
+        -webkit-font-smoothing: antialiased;
       }
       
       .cta:hover {
@@ -117,6 +127,16 @@
       section {
         position: relative;
         z-index: 10;
+        /* Optimization for mobile scroll */
+        will-change: transform, opacity;
+      }
+
+      /* Fix horizontal scrolling issue with AOS on mobile */
+      [data-aos] {
+        pointer-events: none;
+      }
+      .aos-animate {
+        pointer-events: auto;
       }
 
       /* Social Proof Popup Styles */
@@ -143,7 +163,7 @@
       }
       @media (max-width: 640px) {
         .social-popup {
-          bottom: 100px;
+          bottom: 110px; /* Slightly higher for floating button */
           left: 12px;
           right: 12px;
           max-width: calc(100% - 24px);
@@ -171,19 +191,19 @@
     <script>
       particlesJS("particles-js", {
         particles: {
-          number: { value: 60, density: { enable: true, value_area: 800 } },
+          number: { value: 30, density: { enable: true, value_area: 800 } }, // Reduced for mobile performance
           color: { value: ["#ffd700", "#ffffff", "#87cefa"] },
           shape: { type: "circle" },
           opacity: { 
-            value: 0.7,
+            value: 0.5,
             random: true,
-            anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false }
+            anim: { enable: true, speed: 0.5, opacity_min: 0.1, sync: false }
           },
-          size: { value: 3, random: true },
+          size: { value: 2, random: true },
           line_linked: { enable: false },
           move: { 
             enable: true,
-            speed: 1,
+            speed: 0.8,
             direction: "none",
             random: true,
             straight: false,

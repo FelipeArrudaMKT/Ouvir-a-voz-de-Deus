@@ -3,6 +3,8 @@ import React from 'react';
 import { CheckCircle, ShieldCheck, Sun, Compass } from 'lucide-react';
 
 export const Solution: React.FC = () => {
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+
   const steps = [
     {
       title: "O Filtro da Verdade",
@@ -32,7 +34,7 @@ export const Solution: React.FC = () => {
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-amber-500/5 blur-[120px] rounded-full"></div>
 
       <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
-        <div className="relative" data-aos="fade-right">
+        <div className="relative" data-aos={isMobile ? "fade-up" : "fade-right"}>
           <img 
             src="https://picsum.photos/seed/divine/800/1000" 
             alt="Pessoa em contemplação" 
@@ -46,7 +48,7 @@ export const Solution: React.FC = () => {
           </div>
         </div>
 
-        <div className="space-y-10" data-aos="fade-left">
+        <div className="space-y-10" data-aos={isMobile ? "fade-up" : "fade-left"} data-aos-delay={isMobile ? "0" : "200"}>
           <div className="space-y-4">
             <h2 className="text-3xl md:text-5xl font-display font-bold text-white leading-tight">
               O Caminho para uma <br />
@@ -59,7 +61,7 @@ export const Solution: React.FC = () => {
 
           <div className="grid gap-6">
             {steps.map((step, i) => (
-              <div key={i} className="flex gap-4 items-start p-4 rounded-xl hover:bg-white/5 transition-colors border border-transparent hover:border-white/5" data-aos="fade-up" data-aos-delay={i * 100}>
+              <div key={i} className="flex gap-4 items-start p-4 rounded-xl hover:bg-white/5 transition-colors border border-transparent hover:border-white/5" data-aos="fade-up" data-aos-delay={isMobile ? "50" : i * 100}>
                 <div className="p-3 bg-amber-500/10 text-amber-500 rounded-lg">
                   {step.icon}
                 </div>
@@ -75,7 +77,7 @@ export const Solution: React.FC = () => {
              onClick={() => document.getElementById('offer')?.scrollIntoView({ behavior: 'smooth' })}
              className="cta"
              data-aos="zoom-in"
-             data-aos-delay="500"
+             data-aos-delay={isMobile ? "100" : "500"}
           >
             QUERO COMEÇAR MINHA JORNADA
           </button>

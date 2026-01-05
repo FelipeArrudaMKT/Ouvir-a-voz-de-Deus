@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { Sparkles, Shield, Clock, BookmarkCheck, CreditCard, Landmark, Check } from 'lucide-react';
 
 export const Pricing: React.FC = () => {
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+
   // LINK DE CHECKOUT SOLICITADO
   const checkoutUrl = "https://pay.kirvano.com/0a2474c3-3f6c-4a60-b36e-7ecbc8c12bf9?aff=d1909329-1b88-4646-824b-1fd3bec02d2a";
   
@@ -37,7 +39,7 @@ export const Pricing: React.FC = () => {
 
         <div 
           className="bg-zinc-900/90 border-4 border-amber-500 rounded-[3rem] overflow-hidden shadow-[0_0_120px_rgba(251,191,36,0.3)] backdrop-blur-xl"
-          data-aos="flip-up"
+          data-aos={isMobile ? "zoom-in" : "flip-up"}
         >
           <div className="bg-amber-500 py-4 px-6 text-center">
             <span className="text-black font-black tracking-[0.3em] text-sm uppercase">ACESSO IMEDIATO + BÔNUS EXCLUSIVOS</span>
@@ -111,16 +113,16 @@ export const Pricing: React.FC = () => {
           </div>
         </div>
 
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-3 gap-8">
-          <div className="p-6 glass rounded-[2rem] text-center border-amber-500/20" data-aos="fade-up" data-aos-delay="200">
+        <div className="mt-16 grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
+          <div className="p-6 glass rounded-[2rem] text-center border-amber-500/20" data-aos="fade-up" data-aos-delay={isMobile ? "50" : "200"}>
             <Clock className="w-8 h-8 text-amber-500 mx-auto mb-3" />
             <p className="text-sm text-gray-100 font-black uppercase tracking-tighter leading-tight">Acesso Imediato <br /><span className="text-[10px] font-normal text-gray-400">No seu e-mail</span></p>
           </div>
-          <div className="p-6 glass rounded-[2rem] text-center border-amber-500/20" data-aos="fade-up" data-aos-delay="400">
+          <div className="p-6 glass rounded-[2rem] text-center border-amber-500/20" data-aos="fade-up" data-aos-delay={isMobile ? "100" : "400"}>
             <Shield className="w-8 h-8 text-amber-500 mx-auto mb-3" />
             <p className="text-sm text-gray-100 font-black uppercase tracking-tighter leading-tight">Risco Zero <br /><span className="text-[10px] font-normal text-gray-400">7 dias de garantia</span></p>
           </div>
-          <div className="p-6 glass rounded-[2rem] text-center border-amber-500/20 col-span-2 md:col-span-1" data-aos="fade-up" data-aos-delay="600">
+          <div className="p-6 glass rounded-[2rem] text-center border-amber-500/20 col-span-2 md:col-span-1" data-aos="fade-up" data-aos-delay={isMobile ? "150" : "600"}>
             <BookmarkCheck className="w-8 h-8 text-amber-500 mx-auto mb-3" />
             <p className="text-sm text-gray-100 font-black uppercase tracking-tighter leading-tight">Conteúdo Vitalício <br /><span className="text-[10px] font-normal text-gray-400">Estude no seu tempo</span></p>
           </div>
